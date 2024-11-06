@@ -3,10 +3,12 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
+import useCartAndWishlistCount from "./../useCartAndWishlistCount"; // Update the path as needed
 
 const Navbar = () => {
     const location = useLocation();
     const [menuOpen, setMenuOpen] = useState(false);
+    const { cartCount, wishlistCount } = useCartAndWishlistCount();
 
     const isActive = (path) => location.pathname === path;
 
@@ -47,15 +49,25 @@ const Navbar = () => {
                         </Link>
                     </ul>
 
-                    <div className="hidden md:flex space-x-4">
-                        {/* Cart Icon */}
+                    <div className="hidden md:flex space-x-4 relative">
+                        {/* Cart Notification */}
                         <button className={`relative rounded-full p-2 border-2 ${iconColor} ${iconColor === "text-purple-600" ? "text-white" : "border-white"}`}>
                             <MdOutlineShoppingCart />
+                            {cartCount > 0 && (
+                                <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full px-1">
+                                    {cartCount}
+                                </span>
+                            )}
                         </button>
 
-                        {/* Wishlist Icon */}
+                        {/* Wishlist Notification */}
                         <button className={`relative rounded-full p-2 border-2 ${iconColor} ${iconColor === "text-purple-600" ? "text-white" : "border-white"}`}>
                             <FaRegHeart />
+                            {wishlistCount > 0 && (
+                                <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full px-1">
+                                    {wishlistCount}
+                                </span>
+                            )}
                         </button>
                     </div>
                 </nav>
@@ -79,14 +91,24 @@ const Navbar = () => {
                         </ul>
 
                         <div className="flex space-x-4 p-6 justify-center">
-                            {/* Cart Icon */}
+                            {/* Cart Notification */}
                             <button className={`relative rounded-full p-2 border-2 ${mobileIconColor} ${mobileBorderColor}`}>
                                 <MdOutlineShoppingCart />
+                                {cartCount > 0 && (
+                                    <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full px-1">
+                                        {cartCount}
+                                    </span>
+                                )}
                             </button>
 
-                            {/* Wishlist Icon */}
+                            {/* Wishlist Notification */}
                             <button className={`relative rounded-full p-2 border-2 ${mobileIconColor} ${mobileBorderColor}`}>
                                 <FaRegHeart />
+                                {wishlistCount > 0 && (
+                                    <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full px-1">
+                                        {wishlistCount}
+                                    </span>
+                                )}
                             </button>
                         </div>
                     </div>

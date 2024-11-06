@@ -3,10 +3,12 @@ import ReactStars from 'react-rating-stars-component';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 import { addToCart, addToWishlist } from '../utils/productUtils';
 
 const ProductDetails = () => {
     const product = useLoaderData();
+    const [isWishlistDisabled, setIsWishlistDisabled] = useState(false);
 
     const handleAddToCart = () => {
         const result = addToCart(product);
@@ -23,6 +25,7 @@ const ProductDetails = () => {
             toast.warn(result.message);
         } else {
             toast.info(result.message);
+            setIsWishlistDisabled(true); // Disable the button after adding to wishlist
         }
     };
 
@@ -35,12 +38,12 @@ const ProductDetails = () => {
             </div>
 
             <div className="flex justify-center relative rounded-lg" style={{ top: '-140px' }}>
-                <div className="flex flex-col lg:flex-row rounded-lg items-stretch bg-purple-100  p-6 w-full max-w-6xl">
+                <div className="flex flex-col lg:flex-row rounded-lg items-stretch bg-purple-100 p-6 w-full max-w-6xl">
                     <div className="w-full lg:w-1/3 flex justify-center items-center bg-white p-4 lg:mb-0">
                         <img src={product.product_image} alt={product.product_title} className="w-3/4 h-auto object-contain " />
                     </div>
 
-                    <div className="w-full lg:w-2/3 bg-white p-6  border-gray-200 flex flex-col justify-between">
+                    <div className="w-full lg:w-2/3 bg-white p-6 border-gray-200 flex flex-col justify-between">
                         <div>
                             <h1 className="text-2xl md:text-3xl font-bold mb-2">{product.product_title}</h1>
                             <p className="text-lg md:text-2xl font-semibold text-gray-700 mb-4">Price: ${product.price}</p>
@@ -81,9 +84,12 @@ const ProductDetails = () => {
                             </button>
                             <button
                                 onClick={handleAddToWishlist}
-                                className="flex items-center text-purple-600 font-semibold py-2 px-6 border border-purple-600 rounded-lg hover:bg-purple-100 transition-colors gap-2 text-sm md:text-base"
+                                disabled={isWishlistDisabled}
+                                className={`flex items-center font-semibold py-2 px-6 border rounded-lg transition-colors gap-2 text-sm md:text-base ${
+                                    isWishlistDisabled ? 'text-gray-400 border-gray-400 cursor-not-allowed' : 'text-purple-600 border-purple-600 hover:bg-purple-100'
+                                }`}
                             >
-                                 Wish list <FaRegHeart />
+                                Wish list <FaRegHeart />
                             </button>
                         </div>
                     </div>
