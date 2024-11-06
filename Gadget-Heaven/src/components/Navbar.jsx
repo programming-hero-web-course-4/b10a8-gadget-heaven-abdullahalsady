@@ -1,20 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { Link, useLocation } from "react-router-dom";
-import useCartAndWishlistCount from "./../useCartAndWishlistCount"; // Update the path as needed
+import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
     const location = useLocation();
     const [menuOpen, setMenuOpen] = useState(false);
-    const { cartCount, wishlistCount } = useCartAndWishlistCount();
+    const [cartCount, setCartCount] = useState(0);
+    const [wishlistCount, setWishlistCount] = useState(0);
 
     const isActive = (path) => location.pathname === path;
 
     const iconColor = location.pathname === "/home" ? "text-white" : "text-black";
     const mobileIconColor = location.pathname === "/home" ? "text-white" : "text-black";
     const mobileBorderColor = location.pathname === "/home" ? "border-white" : "border-black";
+
+    // Function to update cart and wishlist counts
+    const updateCounts = () => {
+        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        const wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || [];
+        console.log(cartItems.length)
+        setCartCount(cartItems.length);
+        setWishlistCount(wishlistItems.length);
+    };
+
+    useEffect(() => {
+        // Initial load of counts
+        updateCounts();
+    
+        // Listen for custom events to update counts
+        const handleCartUpdate = () => updateCounts();
+        const handleWishlistUpdate = () => updateCounts();
+    
+        window.addEventListener("cartUpdated", handleCartUpdate);
+        window.addEventListener("wishlistUpdated", handleWishlistUpdate);
+    
+        // Clean up event listeners on component unmount
+        return () => {
+            window.removeEventListener("cartUpdated", handleCartUpdate);
+            window.removeEventListener("wishlistUpdated", handleWishlistUpdate);
+        };
+    }, []);
+    
 
     return (
         <div className="w-full">
@@ -35,18 +63,18 @@ const Navbar = () => {
                     </div>
 
                     <ul className="hidden md:flex space-x-6">
-                        <Link to="/" className={`${isActive("/") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
+                        <NavLink to="/" className={`${isActive("/") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
                             <li>Home</li>
-                        </Link>
-                        <Link to="/statistics" className={`${isActive("/statistics") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
+                        </NavLink>
+                        <NavLink to="/statistics" className={`${isActive("/statistics") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
                             <li>Statistics</li>
-                        </Link>
-                        <Link to="/dashboard" className={`${isActive("/dashboard") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
+                        </NavLink>
+                        <NavLink to="/dashboard" className={`${isActive("/dashboard") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
                             <li>Dashboard</li>
-                        </Link>
-                        <Link to="/FAQs" className={`${isActive("/FAQs") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
+                        </NavLink>
+                        <NavLink to="/FAQs" className={`${isActive("/FAQs") ? "text-purple-600 font-semibold" : "hover:text-gray-300"}`}>
                             <li>FAQs</li>
-                        </Link>
+                        </NavLink>
                     </ul>
 
                     <div className="hidden md:flex space-x-4 relative">
@@ -76,18 +104,18 @@ const Navbar = () => {
                 {menuOpen && (
                     <div className="fixed inset-0 bg-purple-500 bg-opacity-90 flex flex-col justify-between text-white w-3/4 md:hidden z-10">
                         <ul className="flex flex-col space-y-4 mt-8 px-6">
-                            <Link to="/" onClick={() => setMenuOpen(false)} className={`${isActive("/") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
+                            <NavLink to="/" onClick={() => setMenuOpen(false)} className={`${isActive("/") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
                                 <li>Home</li>
-                            </Link>
-                            <Link to="/statistics" onClick={() => setMenuOpen(false)} className={`${isActive("/statistics") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
+                            </NavLink>
+                            <NavLink to="/statistics" onClick={() => setMenuOpen(false)} className={`${isActive("/statistics") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
                                 <li>Statistics</li>
-                            </Link>
-                            <Link to="/dashboard" onClick={() => setMenuOpen(false)} className={`${isActive("/dashboard") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
+                            </NavLink>
+                            <NavLink to="/dashboard" onClick={() => setMenuOpen(false)} className={`${isActive("/dashboard") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
                                 <li>Dashboard</li>
-                            </Link>
-                            <Link to="/FAQs" onClick={() => setMenuOpen(false)} className={`${isActive("/faq") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
+                            </NavLink>
+                            <NavLink to="/FAQs" onClick={() => setMenuOpen(false)} className={`${isActive("/faq") ? "text-purple-700 font-semibold" : "hover:text-gray-300"}`}>
                                 <li>FAQs</li>
-                            </Link>
+                            </NavLink>
                         </ul>
 
                         <div className="flex space-x-4 p-6 justify-center">

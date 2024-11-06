@@ -24,19 +24,19 @@ const Dashboard = () => {
     
     useEffect(() => {
         document.title = 'Dashboard ✨ Gadget Heaven';
-        fetchProducts();
-    });
 
-    const fetchProducts = () => {
-        fetch('/data.json')
-            .then(response => response.json())
-            .then(data => {
-                setProducts(data);
-                loadCart();
-                loadWishlist();
-            })
-            .catch(error => console.error("Error fetching products:", error));
-    };
+            fetch('/data.json')
+                .then(response => response.json())
+                .then(data => {
+                    setProducts(data);
+                    loadCart();
+                    loadWishlist();
+                })
+                .catch(error => console.error("Error fetching products:", error));
+
+    }, [setProducts]);
+
+
 
     const loadCart = () => {
         const storedCart = loadFromLocalStorage('cart');
@@ -60,6 +60,7 @@ const Dashboard = () => {
 
         setCart(updatedCart);
         saveToLocalStorage('cart', updatedCart);
+        window.dispatchEvent(new Event("cartUpdated"));
     };
 
     const toggleWishlistItem = (itemId) => {
@@ -70,6 +71,8 @@ const Dashboard = () => {
 
         setWishlist(updatedWishlist);
         saveToLocalStorage('wishlist', updatedWishlist);
+        window.dispatchEvent(new Event("wishlistUpdated"));
+
     };
 
     const addToCartFromWishlist = (itemId) => {
@@ -80,6 +83,7 @@ const Dashboard = () => {
             const updatedCart = [...cart, itemId];
             setCart(updatedCart);
             saveToLocalStorage('cart', updatedCart);
+            window.dispatchEvent(new Event("cartUpdated"));
             toast.success("Added to cart from wishlist!");
         }
     };
@@ -114,6 +118,7 @@ const Dashboard = () => {
         setShowModal(false);
         setCart([]);
         saveToLocalStorage('cart', []);
+        window.dispatchEvent(new Event("cartUpdated"));
         navigate('/');
     };
 
