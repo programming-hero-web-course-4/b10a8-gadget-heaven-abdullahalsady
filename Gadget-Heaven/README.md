@@ -7,10 +7,16 @@ Welcome to **Gadget Heaven** – a paradise for gadget enthusiasts! This project
 
 
 ## 🌐 Live Website
-Visit the live site to explore the project: [Live Website Link](https://your-live-website-link.com)
+Visit the live site to explore the project: [Live Website Link](https://spiffy-tanuki-48919f.netlify.app/)
 
 ---
 
+
+## 📄 Documentation
+
+ [Requirement Document](./src/assets/assignment-requirements.pdf)
+
+---
 
 ## ⚛️ React Fundamentals Used
 This project is built with a range of fundamental React concepts:
