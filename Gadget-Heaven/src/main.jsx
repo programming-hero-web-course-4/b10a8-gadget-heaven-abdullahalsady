@@ -7,6 +7,8 @@ import Dashboard from './pages/Dashboard';
 import Statistics from './pages/Statistics';
 import ProductDetails from './components/ProductDetails';
 import FAQs from './pages/FAQs';
+import NotFound from './pages/NotFound';
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -19,6 +21,7 @@ import App from './App';
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <NotFound/>,
     element: <App />,
     children: [
       {
@@ -51,6 +54,10 @@ const router = createBrowserRouter([
         element: <FAQs />
       }
     ]
+  },
+  {
+    path: "*",
+    element: <NotFound/>
   }
 ]);
 

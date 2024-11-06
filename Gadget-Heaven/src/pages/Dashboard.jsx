@@ -21,6 +21,7 @@ const Dashboard = () => {
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
+    
     useEffect(() => {
         document.title = 'Dashboard ✨ Gadget Heaven';
         fetchProducts();
