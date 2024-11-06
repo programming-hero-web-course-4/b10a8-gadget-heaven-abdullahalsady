@@ -1,0 +1,172 @@
+[
+  {
+    "product_id": "L001",
+    "product_title": "Dell XPS 13",
+    "product_image": "https://i.ibb.co.com/q9PpnQJ/first.jpg",
+    "category": "Laptops",
+    "price": 999,
+    "description": "A compact, high-performance laptop for professionals.",
+    "specification": [
+      "13.4-inch FHD+ InfinityEdge display",
+      "Intel Core i7 12th Gen",
+      "16GB RAM, 512GB SSD",
+      "Intel Iris Xe Graphics",
+      "Windows 11"
+    ],
+    "availability": true,
+    "rating": 4.6
+  },
+  {
+    "product_id": "L002",
+    "product_title": "HP Spectre x360",
+    "product_image": "https://i.ibb.co.com/JHK8DzC/second.jpg",
+    "category": "Laptops",
+    "price": 1299,
+    "description": "Convertible laptop with a sleek design and powerful performance.",
+    "specification": [
+      "13.5-inch 3K OLED display",
+      "Intel Core i7 12th Gen",
+      "16GB RAM, 1TB SSD",
+      "Intel Iris Xe Graphics",
+      "Windows 11"
+    ],
+    "availability": false,
+    "rating": 4.7
+  },
+  {
+    "product_id": "L003",
+    "product_title": "Lenovo ThinkPad X1",
+    "product_image": "https://i.ibb.co.com/0cTfX9Z/third.jpg",
+    "category": "Laptops",
+    "price": 1399,
+    "description": "Lightweight and durable laptop ideal for business users.",
+    "specification": [
+      "14-inch FHD+ display",
+      "Intel Core i7 12th Gen",
+      "16GB RAM, 512GB SSD",
+      "Integrated Intel Graphics",
+      "Windows 11 Pro"
+    ],
+    "availability": true,
+    "rating": 4.8
+  },
+  {
+    "product_id": "L004",
+    "product_title": "ASUS ROG Zephyrus G14",
+    "product_image": "https://i.ibb.co.com/w79hv94/fourth.jpg",
+    "category": "Laptops",
+    "price": 1499,
+    "description": "Powerful gaming laptop with an ultra-slim design.",
+    "specification": [
+      "14-inch QHD display",
+      "AMD Ryzen 9",
+      "16GB RAM, 1TB SSD",
+      "NVIDIA GeForce RTX 3060",
+      "Windows 11"
+    ],
+    "availability": true,
+    "rating": 4.6
+  },
+  {
+    "product_id": "L005",
+    "product_title": "Microsoft Surface Laptop 5",
+    "product_image": "https://i.ibb.co.com/9gQQ3Zy/fifth.jpg",
+    "category": "Laptops",
+    "price": 1199,
+    "description": "Sleek laptop with a high-resolution touchscreen.",
+    "specification": [
+      "13.5-inch PixelSense display",
+      "Intel Core i5 12th Gen",
+      "8GB RAM, 256GB SSD",
+      "Intel Iris Xe Graphics",
+      "Windows 11"
+    ],
+    "availability": false,
+    "rating": 4.5
+  },
+  {
+    "product_id": "L006",
+    "product_title": "Acer Aspire 5",
+    "product_image": "https://i.ibb.co.com/kDnNj6L/sixth.jpg",
+    "category": "Laptops",
+    "price": 649,
+    "description": "Affordable laptop with good performance for everyday tasks.",
+    "specification": [
+      "15.6-inch FHD display",
+      "AMD Ryzen 5",
+      "8GB RAM, 512GB SSD",
+      "AMD Radeon Graphics",
+      "Windows 11"
+    ],
+    "availability": true,
+    "rating": 4.3
+  },
+  {
+    "product_id": "P001",
+    "product_title": "Apple iPhone 15 Pro",
+    "product_image": "https://i.ibb.co.com/j36t0VM/seventh.jpg",
+    "category": "Phones",
+    "price": 2999,
+    "description": "Experience the ultimate smartphone with the iPhone 15 Pro.",
+    "specification": [
+      "6.1-inch Super Retina XDR display",
+      "A17 Bionic chip",
+      "Triple-camera system (48MP Main, 12MP Telephoto, 12MP Ultrawide)",
+      "LiDAR Scanner",
+      "Up to 1TB storage"
+    ],
+    "availability": true,
+    "rating": 4.9
+  },
+  {
+    "product_id": "P002",
+    "product_title": "Samsung Galaxy S23",
+    "product_image": "https://i.ibb.co.com/ydzz6Qf/eighth.jpg",
+    "category": "Phones",
+    "price": 2799,
+    "description": "A powerful Android phone with advanced camera technology.",
+    "specification": [
+      "6.1-inch Dynamic AMOLED 2X display",
+      "Snapdragon 8 Gen 2 processor",
+      "50MP triple-camera setup",
+      "3700mAh battery",
+      "Up to 512GB storage"
+    ],
+    "availability": true,
+    "rating": 4.7
+  },
+  {
+    "product_id": "M001",
+    "product_title": "Apple MacBook Pro",
+    "product_image": "https://i.ibb.co.com/0tYC3vc/ninth.jpg",
+    "category": "MacBook",
+    "price": 4999,
+    "description": "High-performance MacBook with M2 Pro chip for professionals.",
+    "specification": [
+      "14.2-inch Liquid Retina XDR display",
+      "Apple M2 Pro chip",
+      "16GB RAM, 512GB SSD",
+      "Up to 18 hours battery life",
+      "macOS"
+    ],
+    "availability": true,
+    "rating": 4.9
+  },
+  {
+    "product_id": "M002",
+    "product_title": "Apple MacBook Air M2",
+    "product_image": "https://i.ibb.co.com/xF3MfK9/tenth.jpg",
+    "category": "MacBook",
+    "price": 6199,
+    "description": "Lightweight and powerful MacBook with the new M2 chip.",
+    "specification": [
+      "13.6-inch Liquid Retina display",
+      "Apple M2 chip",
+      "8GB RAM, 256GB SSD",
+      "Up to 18 hours battery life",
+      "macOS"
+    ],
+    "availability": true,
+    "rating": 4.8
+  }
+]
